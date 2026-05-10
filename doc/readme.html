@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChargeGrid Intelligence — README</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Sprint 1 — Produção</div>
+    <h1><strong>ChargeGrid</strong> Intelligence</h1>
+    <p class="hero-sub">Plataforma integrada de gestão para infraestrutura de recarga de veículos elétricos no setor comercial.</p>
+    <div class="hero-badge-row">
+      <span class="badge badge-green">Python 3.7+</span>
+      <span class="badge badge-blue">Arquitetura MVC</span>
+      <span class="badge badge-purple">4 Perfis de Usuário</span>
+      <span class="badge badge-gray">Zero Dependências</span>
+      <span class="badge badge-gray">FIAP · GOODWE</span>
+    </div>
+    <div class="hero-meta">
+      Versão <span>1.0</span> &nbsp;·&nbsp; Atualizado em <span>Maio 2026</span> &nbsp;·&nbsp; Disciplina <span>Data Structures and Algorithms</span>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR NAV -->
+  <nav class="sidebar">
+    <p class="sidebar-label">Conteúdo</p>
+    <ul class="nav-list">
+      <li><a href="#overview">Visão Geral</a></li>
+      <li><a href="#problem">Problema e Solução</a></li>
+      <li><a href="#modules">Módulos</a></li>
+      <li><a href="#architecture">Arquitetura</a></li>
+      <li><a href="#install">Instalação</a></li>
+      <li><a href="#usage">Como Executar</a></li>
+      <li><a href="#structure">Estrutura de Diretórios</a></li>
+      <li><a href="#profiles">Guia por Perfil</a></li>
+      <li><a href="#reference">Referência de Módulos</a></li>
+      <li><a href="#tests">Testes Validados</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- OVERVIEW -->
+    <section class="section" id="overview">
+      <p class="section-label">01 · Visão Geral</p>
+      <h2>O que é o ChargeGrid Intelligence</h2>
+      <p>ChargeGrid Intelligence é um sistema de gerenciamento de infraestrutura de recarga de veículos elétricos voltado ao setor comercial. A plataforma centraliza o controle de demanda energética, o gerenciamento de eletropostos e a aplicação de políticas de tarifação dinâmica em uma única base de dados.</p>
+      <p>O sistema atende simultaneamente a três perfis distintos de usuário — clientes finais (residencial e comercial), gestores de estabelecimentos parceiros e administradores globais da GoodWe — garantindo consistência operacional e rastreabilidade completa das sessões de recarga.</p>
+      <p>A implementação utiliza <strong>Python puro com arquitetura MVC</strong>, sem dependências externas, o que facilita a execução em qualquer ambiente com Python 3.7 ou superior instalado.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- PROBLEM -->
+    <section class="section" id="problem">
+      <p class="section-label">02 · Problema e Solução</p>
+      <h2>Por que este sistema existe</h2>
+      <p>A infraestrutura comercial de recarga de VEs enfrenta três lacunas críticas que comprometem a escalabilidade do setor.</p>
+
+      <div class="problem-grid">
+        <div class="problem-card problem">
+          <p class="card-tag">Lacuna</p>
+          <h4>Controle de potência fragmentado</h4>
+          <p>Sem mecanismo centralizado para gerenciar distribuição de energia entre múltiplos carregadores simultaneamente.</p>
+        </div>
+        <div class="problem-card solution">
+          <p class="card-tag">Solução</p>
+          <h4>Seleção e cálculo por nível</h4>
+          <p>Carregadores 7kW / 11kW / 22kW com cálculo automático de tempo e energia por sessão.</p>
+        </div>
+        <div class="problem-card problem">
+          <p class="card-tag">Lacuna</p>
+          <h4>Ausência de registro estruturado</h4>
+          <p>Sessões de recarga sem rastreabilidade impossibilitam faturamento preciso e auditoria.</p>
+        </div>
+        <div class="problem-card solution">
+          <p class="card-tag">Solução</p>
+          <h4>Histórico centralizado</h4>
+          <p>Cada sessão é registrada em <code>session_history</code> com potência, energia, custo e duração.</p>
+        </div>
+        <div class="problem-card problem">
+          <p class="card-tag">Lacuna</p>
+          <h4>Tarifação estática e inadequada</h4>
+          <p>Preços fixos ignoram variação de demanda e não incentivam distribuição de carga ao longo do dia.</p>
+        </div>
+        <div class="problem-card solution">
+          <p class="card-tag">Solução</p>
+          <h4>Tarifação dinâmica por horário</h4>
+          <p>R$&nbsp;1,60/kWh (normal) e R$&nbsp;2,10/kWh nos horários de pico (18h–21h).</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- MODULES -->
+    <section class="section" id="modules">
+      <p class="section-label">03 · Módulos</p>
+      <h2>Funcionalidades por perfil</h2>
+      <p>O sistema é organizado em quatro módulos independentes, cada um projetado para um tipo específico de usuário.</p>
+
+      <div class="module-grid">
+
+        <div class="module-card mod-b2c">
+          <div class="module-header">
+            <span class="module-title">Módulo Comercial</span>
+            <span class="module-tag tag-b2c">B2C · Recarga Pública</span>
+          </div>
+          <p class="module-desc">Simula a experiência completa de recarga em postos parceiros da GoodWe, desde a seleção do carregador até o relatório final da sessão.</p>
+          <div class="feature-list">
+            <span class="feature-pill">Seleção de potência 7/11/22kW</span>
+            <span class="feature-pill">Tarifação dinâmica por horário</span>
+            <span class="feature-pill">Barra de progresso visual</span>
+            <span class="feature-pill">Registro automático de sessão</span>
+            <span class="feature-pill">Relatório final formatado</span>
+          </div>
+        </div>
+
+        <div class="module-card mod-home">
+          <div class="module-header">
+            <span class="module-title">Módulo Residencial</span>
+            <span class="module-tag tag-home">Smart Home</span>
+          </div>
+          <p class="module-desc">Experiência simplificada para usuários com carregador doméstico, com foco em economia e telemetria sem complexidade de pagamento.</p>
+          <div class="feature-list">
+            <span class="feature-pill">Onboarding com validação de modelo</span>
+            <span class="feature-pill">Dashboard de economia</span>
+            <span class="feature-pill">Comparação elétrico vs. gasolina</span>
+            <span class="feature-pill">Informações técnicas do carregador</span>
+            <span class="feature-pill">7 modelos de VE suportados</span>
+          </div>
+        </div>
+
+        <div class="module-card mod-b2b">
+          <div class="module-header">
+            <span class="module-title">Módulo Estabelecimento</span>
+            <span class="module-tag tag-b2b">B2B · Gestores</span>
+          </div>
+          <p class="module-desc">Painel de controle para proprietários de estabelecimentos parceiros monitorarem hardware, faturamento e desempenho dos carregadores instalados.</p>
+          <div class="feature-list">
+            <span class="feature-pill">Relatórios: diário / semanal / mensal</span>
+            <span class="feature-pill">Status de hardware em tempo real</span>
+            <span class="feature-pill">Gestão de manutenção</span>
+            <span class="feature-pill">Ranking de rendimento financeiro</span>
+          </div>
+        </div>
+
+        <div class="module-card mod-admin">
+          <div class="module-header">
+            <span class="module-title">Módulo Admin Master</span>
+            <span class="module-tag tag-admin">GoodWe · Global</span>
+          </div>
+          <p class="module-desc">Visão consolidada da infraestrutura nacional para administradores da GoodWe, com controle sobre tarifas, royalties e saúde da rede.</p>
+          <div class="feature-list">
+            <span class="feature-pill">KPIs de disponibilidade nacional</span>
+            <span class="feature-pill">Ajuste global de tarifas</span>
+            <span class="feature-pill">Cálculo automático de royalties</span>
+            <span class="feature-pill">Filtro de dispositivos críticos</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ARCHITECTURE -->
+    <section class="section" id="architecture">
+      <p class="section-label">04 · Arquitetura</p>
+      <h2>Como o sistema é organizado</h2>
+      <p>O projeto segue o padrão <strong>MVC (Model-View-Controller)</strong>, com separação clara de responsabilidades entre camadas e uma base de dados centralizada compartilhada entre todos os módulos.</p>
+
+      <div class="arch-diagram">
+        <div class="arch-top">main.py · Portal de entrada e roteamento de perfis</div>
+        <div class="arch-row">
+          <div class="arch-cell">
+            <p class="arch-cell-label">Camada</p>
+            <p class="arch-cell-value" style="color:#fff; font-weight:500;">View</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Responsabilidade</p>
+            <p class="arch-cell-value">Interação com o usuário</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Exemplos</p>
+            <p class="arch-cell-value">Menus, inputs, formatação de saída</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Arquivo</p>
+            <p class="arch-cell-value"><span class="inline-code">view.py</span></p>
+          </div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-cell">
+            <p class="arch-cell-label">Camada</p>
+            <p class="arch-cell-value" style="color:#fff; font-weight:500;">Logic</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Responsabilidade</p>
+            <p class="arch-cell-value">Cálculos e validações</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Exemplos</p>
+            <p class="arch-cell-value">Tarifação dinâmica, validação de veículo</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Arquivo</p>
+            <p class="arch-cell-value"><span class="inline-code">logic.py</span></p>
+          </div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-cell">
+            <p class="arch-cell-label">Camada</p>
+            <p class="arch-cell-value" style="color:#fff; font-weight:500;">Controller</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Responsabilidade</p>
+            <p class="arch-cell-value">Orquestração do fluxo</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Exemplos</p>
+            <p class="arch-cell-value">Chamar view + logic, gerenciar estados</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Arquivo</p>
+            <p class="arch-cell-value"><span class="inline-code">controller.py</span></p>
+          </div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-cell">
+            <p class="arch-cell-label">Camada</p>
+            <p class="arch-cell-value" style="color:#fff; font-weight:500;">Database</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Responsabilidade</p>
+            <p class="arch-cell-value">Fonte única de dados</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Exemplos</p>
+            <p class="arch-cell-value">session_history, residencial_data</p>
+          </div>
+          <div class="arch-cell">
+            <p class="arch-cell-label">Arquivo</p>
+            <p class="arch-cell-value"><span class="inline-code">database.py</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- INSTALL -->
+    <section class="section" id="install">
+      <p class="section-label">05 · Instalação</p>
+      <h2>Pré-requisitos e configuração</h2>
+      <p>O projeto não possui dependências externas. Tudo que é necessário é o Python instalado.</p>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Verificar instalação do Python</h4>
+            <p>Requer Python 3.7 ou superior.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Obter o projeto</h4>
+            <p>Via Git ou download direto do arquivo ZIP.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Executar diretamente</h4>
+            <p>Nenhuma instalação adicional é necessária.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-label">bash · verificar python</div>
+      <pre>python --version
+# ou
+python3 --version</pre>
+
+      <div class="code-label">bash · clonar repositório</div>
+      <pre>git clone https://github.com/seu-repositorio/chargeGrid-intelligence.git
+cd chargeGrid-intelligence</pre>
+    </section>
+
+    <hr class="divider">
+
+    <!-- USAGE -->
+    <section class="section" id="usage">
+      <p class="section-label">06 · Execução</p>
+      <h2>Como executar</h2>
+
+      <div class="code-label">bash</div>
+      <pre><span style="color: var(--text3)"># Windows</span>
+python main.py
+
+<span style="color: var(--text3)"># macOS / Linux</span>
+python3 main.py</pre>
+
+      <p style="margin-top: 20px;">Sequência de execução após iniciar o programa:</p>
+
+      <div class="flow">
+        <div class="flow-step"><strong>1</strong>Autenticação simulada</div>
+        <div class="flow-step"><strong>2</strong>Menu de perfis</div>
+        <div class="flow-step"><strong>3</strong>Seleção do módulo</div>
+        <div class="flow-step"><strong>4</strong>Interação no módulo</div>
+        <div class="flow-step"><strong>5</strong>Retorno ao menu</div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- STRUCTURE -->
+    <section class="section" id="structure">
+      <p class="section-label">07 · Estrutura</p>
+      <h2>Organização do projeto</h2>
+
+      <div class="code-label">árvore de diretórios</div>
+      <pre>chargeGrid-intelligence/
+├── main.py
+├── README.html
+├── core/
+│   ├── __init__.py
+│   ├── auth.py
+│   └── utils.py
+└── modules/
+    ├── __init__.py
+    ├── commercial/
+    │   ├── controller.py   <span style="color: var(--text3)">← orquestração</span>
+    │   ├── logic.py        <span style="color: var(--text3)">← cálculos</span>
+    │   └── view.py         <span style="color: var(--text3)">← interface</span>
+    ├── residencial/
+    │   ├── controller.py
+    │   ├── logic.py
+    │   └── view.py
+    ├── establishment/
+    │   ├── controller.py
+    │   ├── logic.py
+    │   └── view.py
+    ├── admin/
+    │   ├── controller.py
+    │   └── view.py
+    └── common/
+        └── database.py     <span style="color: var(--accent)">← fonte única de dados</span></pre>
+    </section>
+
+    <hr class="divider">
+
+    <!-- PROFILES -->
+    <section class="section" id="profiles">
+      <p class="section-label">08 · Guia por Perfil</p>
+      <h2>Exemplos práticos de uso</h2>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Perfil</th>
+            <th>Cenário de Uso</th>
+            <th>Exemplo Prático</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cliente Comercial</td>
+            <td>Recarga em posto parceiro</td>
+            <td>60 kWh, 20% → 80%, carregador 11kW às 19h: 36 kWh, ~327 min, R$ 75,60</td>
+          </tr>
+          <tr>
+            <td>Dono de Estabelecimento</td>
+            <td>Monitoramento e faturamento</td>
+            <td>Visualizar faturamento semanal e alterar status de carregador com falha</td>
+          </tr>
+          <tr>
+            <td>Cliente Residencial</td>
+            <td>Gestão do carregador doméstico</td>
+            <td>Tesla Model 3, ID RES-0001: dashboard exibe economia de R$ 60/mês vs. gasolina</td>
+          </tr>
+          <tr>
+            <td>GoodWe Admin</td>
+            <td>Gestão da rede nacional</td>
+            <td>Ajustar tarifa de pico de R$ 2,10 para R$ 2,30 e gerar relatório de royalties</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr class="divider">
+
+    <!-- REFERENCE -->
+    <section class="section" id="reference">
+      <p class="section-label">09 · Referência</p>
+      <h2>Funções principais por módulo</h2>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Arquivo</th><th>Função</th><th>Descrição</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>core/auth.py</td><td><code>welcome()</code></td><td>Boas-vindas e coleta do nome do usuário</td></tr>
+          <tr><td>core/utils.py</td><td><code>get_menu_option()</code></td><td>Exibe menu e retorna opção validada</td></tr>
+          <tr><td>core/utils.py</td><td><code>get_numeric_input()</code></td><td>Entrada numérica com validação de intervalo</td></tr>
+          <tr><td>commercial/controller.py</td><td><code>run_commercial_module()</code></td><td>Orquestra seleção, cálculo, simulação e registro</td></tr>
+          <tr><td>commercial/logic.py</td><td><code>get_fee_per_kwh()</code></td><td>Retorna tarifa vigente com base no horário atual</td></tr>
+          <tr><td>commercial/view.py</td><td><code>get_charge_power()</code></td><td>Menu de seleção de potência</td></tr>
+          <tr><td>commercial/view.py</td><td><code>start_charging_simulation()</code></td><td>Exibe barra de progresso da recarga</td></tr>
+          <tr><td>residencial/logic.py</td><td><code>validate_car_model()</code></td><td>Valida modelo do veículo contra lista pré-definida</td></tr>
+          <tr><td>residencial/logic.py</td><td><code>calculate_home_economy_savings()</code></td><td>Calcula economia mensal vs. combustível</td></tr>
+          <tr><td>common/database.py</td><td><code>session_history</code></td><td>Lista de sessões comerciais registradas</td></tr>
+          <tr><td>common/database.py</td><td><code>residencial_data</code></td><td>Configuração do usuário residencial</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr class="divider">
+
+    <!-- TESTS -->
+    <section class="section" id="tests">
+      <p class="section-label">10 · Testes</p>
+      <h2>Casos validados</h2>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Cenário</th><th>Entrada</th><th>Saída Esperada</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Opção de menu comercial válida</td><td>1 (7kW)</td><td>Carregador selecionado</td><td><span class="status-ok">Aprovado</span></td></tr>
+          <tr><td>Dados de bateria válidos</td><td>60kWh, 20%, 80%</td><td>36 kWh calculados</td><td><span class="status-ok">Aprovado</span></td></tr>
+          <tr><td>Tarifação em horário de pico</td><td>19h</td><td>R$ 2,10/kWh</td><td><span class="status-ok">Aprovado</span></td></tr>
+          <tr><td>Tarifação em horário normal</td><td>14h</td><td>R$ 1,60/kWh</td><td><span class="status-ok">Aprovado</span></td></tr>
+          <tr><td>Setup residencial completo</td><td>Tesla Model 3</td><td>Setup concluído</td><td><span class="status-ok">Aprovado</span></td></tr>
+          <tr><td>Modelo de veículo inválido</td><td>"Fiat 500"</td><td>Loop de validação</td><td><span class="status-ok">Aprovado</span></td></tr>
+          <tr><td>Cálculo de economia residencial</td><td>30 kWh × R$ 0,80</td><td>Comparação com gasolina</td><td><span class="status-ok">Aprovado</span></td></tr>
+          <tr><td>Progresso de carga 20% → 80%</td><td>Simulação completa</td><td>Barra visual exibida</td><td><span class="status-ok">Aprovado</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ROADMAP -->
+    <section class="section" id="roadmap">
+      <p class="section-label">11 · Roadmap</p>
+      <h2>Evolução do projeto</h2>
+      <p>Desenvolvido em 4 sprints. Sprint 1 (atual) cobre estruturas de dados e algoritmos fundamentais.</p>
+
+      <div style="margin-top: 20px;">
+        <div class="roadmap-item">
+          <span class="roadmap-status status-done">Concluído</span>
+          <span class="roadmap-text">Sprint 1 — Simulador de sessão, estruturas condicionais, repetição e validações</span>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-status status-planned">Planejado</span>
+          <span class="roadmap-text">Integração com protocolo OCPP (Open Charge Point Protocol)</span>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-status status-planned">Planejado</span>
+          <span class="roadmap-text">Banco de dados persistente (SQL ou NoSQL)</span>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-status status-planned">Planejado</span>
+          <span class="roadmap-text">Autenticação com JWT / OAuth</span>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-status status-planned">Planejado</span>
+          <span class="roadmap-text">Dashboard web com Flask ou React</span>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-status status-planned">Planejado</span>
+          <span class="roadmap-text">Previsão de demanda com Machine Learning</span>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-status status-planned">Planejado</span>
+          <span class="roadmap-text">Integração com sistemas de pagamento e exportação de relatórios em PDF</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-left">
+    ChargeGrid Intelligence · v1.0 · Sprint 1<br>
+    FIAP · Data Structures and Algorithms · Maio 2026
+  </div>
+  <div class="footer-right">
+    Desafio proposto por GoodWe<br>
+    Licença MIT
+  </div>
+</footer>
+
+</body>
+</html>
