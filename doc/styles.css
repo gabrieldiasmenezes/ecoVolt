@@ -217,6 +217,52 @@ body {
   margin-bottom: 12px;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.members-table thead {
+  background: rgba(255,255,255,0.04);
+}
+
+.members-table th,
+.members-table td {
+  text-align: left;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.members-table th {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.members-table td {
+  color: var(--text2);
+  font-size: 14px;
+}
+
+.members-table tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.members-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
 .section h2 {
   font-size: 26px;
   font-weight: 500;
