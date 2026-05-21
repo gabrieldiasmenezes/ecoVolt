@@ -357,13 +357,4 @@ Este projeto é desenvolvido em 4 sprints. O Sprint 1 (atual) cobre estruturas d
 
 ---
 
-## Autores
-
-Desenvolvedor: [Seu Nome]  
-Disciplina: Data Structures and Algorithms — FIAP  
-Desafio: GoodWe — ChargeGrid Intelligence  
-Contato: [seu.email@fiap.com.br]
-
----
-
 Versão 1.0 — Sprint 1 — Maio 2026
