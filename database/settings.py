@@ -12,6 +12,13 @@ KWH_PER_100KM = 15
 
 DLM_CIRCUIT_BREAKER_LIMIT_KW = 5.0  # consumo médio elétrico
 
+ROYALTY_RATE = 0.10  # 10% padrão
+
+CRITICAL_POWER_THRESHOLD = 0   # carregador em uso mas com potência zero = anomalia
+
+CURRENT_FIRMWARE = "2.4.1"
+LATEST_FIRMWARE  = "2.5.0"
+
 LINE_SEPARATOR='─' * 38
 
 
@@ -83,3 +90,12 @@ OFF_PEAK_WINDOWS = [
     {"janela": "22h – 00h", "desconto": "30%", "hora_inicio": 22},
     {"janela": "00h – 06h", "desconto": "35%", "hora_inicio": 0},
 ]
+
+FARE_LABELS = {
+    "base":                "Tarifa Base (comum)",
+    "premium":             "Tarifa Premium",
+    "horario_pico":        "Tarifa Horário de Pico",
+    "cortesia_solar":      "Cortesia Solar",
+    "inicio_horario_pico": "Início do Horário de Pico (hora)",
+    "fim_horario_pico":    "Fim do Horário de Pico (hora)"
+}

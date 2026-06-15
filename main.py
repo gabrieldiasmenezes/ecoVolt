@@ -1,6 +1,7 @@
 from auth.auth import auth
 from database.database import users
 
+from modules.admin.admin import admin_service
 from modules.comercial.comercial import comercial_service
 from modules.establishment.establishment import establishment_service
 from modules.residential.residential import residencial_service
@@ -20,11 +21,11 @@ Sistema Inteligente de Recarga Elétrica
 
 def main():
     try:
-        # welcome()
+        welcome()
         while True:
             # user = auth()
             for u in users:
-                if u['id'] == 1002:
+                if u['id'] == 1004:
                     user=u
 
             if not user:
@@ -39,8 +40,8 @@ def main():
                     comercial_service(user)
                 case 'cliente_residencial':
                     residencial_service(user)
-                # case 'administrador':
-                #     admin_service(user)
+                case 'administrador':
+                    admin_service(user)
     except ModuleNotFoundError as e:
         print("[ERRO] Aplicação falhando: ",e)
         

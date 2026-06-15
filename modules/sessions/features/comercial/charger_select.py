@@ -1,7 +1,7 @@
 from datetime import datetime
 from database.database import establishment_chargers, fares
 from modules.comercial.feature.pricing import calculate_fare
-from utils.ui import header, error_option
+from utils.ui import enter, header, error_option
 from utils.system import reset_terminal
 from utils.validation.common_validation import validate_int_value
 from database.settings import ICON_TYPE
@@ -50,7 +50,7 @@ def select_charger(kwh_to_charge, charge_desc):
         chosen= available[option - 1]
         is_premium = chosen.get('reservado_premium', False)
         fare, session_type, reason = calculate_fare(is_premium, is_peak, False)
-
+             
         return {
             "charger":chosen,
             "tarifa":fare,

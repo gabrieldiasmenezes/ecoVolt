@@ -21,6 +21,12 @@ def find_list_item_by_field(items, field_value, field_name):
 
     return result
 
+def get_list_item_by_status(items,status):
+    return find_list_item_by_field(
+        items,
+        status,
+        "status"
+    )
 
 def field_exists(field, value):
     return any(
@@ -93,10 +99,7 @@ def get_user_sessions(user_id):
 # SESSÕES
 # ==========================
 
-def find_sessions_by_charger_ids(
-    sessions,
-    charger_ids
-):
+def find_sessions_by_charger_ids(sessions,charger_ids):
     result = []
 
     for session in sessions:
@@ -106,15 +109,6 @@ def find_sessions_by_charger_ids(
     return result
 
 
-def get_list_item_by_status(
-    items,
-    status
-):
-    return find_list_item_by_field(
-        items,
-        status,
-        "status"
-    )
 
 
 # ==========================
@@ -152,6 +146,27 @@ def current_power_usage(chargers):
         for charger in chargers
     )
 
+def format_charger_id(charger):
+    """Converte ID interno em ID visual (E / R)."""
+    prefix = "E" if "estabelecimento_id" in charger else "R"
+    return f"{prefix}{charger['id']}"
+
+
+def find_charger_by_input(all_chargers, raw_input):
+    raw_input = str(raw_input).strip().upper()
+
+    for c in all_chargers:
+        prefix = "E" if "estabelecimento_id" in c else "R"
+        charger_code = f"{prefix}{c['id']}"
+
+        if charger_code == raw_input:
+            return c
+
+    return None
+
+def get_charger_key(charger):
+    prefix = "E" if "estabelecimento_id" in charger else "R"
+    return f"{prefix}{charger['id']}"
 
 # ==========================
 # ESTABELECIMENTOS
