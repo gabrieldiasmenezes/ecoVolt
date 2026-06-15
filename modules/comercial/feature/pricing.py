@@ -28,12 +28,12 @@ def show_fare_table():
 
     print(f"\nHora atual: {hora}h  |  Horário de pico: {'✅ SIM' if is_peak else '❌ NÃO'}")
     print(f"Pico: {fares['inicio_horario_pico']}h às {fares['fim_horario_pico']}h\n")
-    print(f"{'Tarifa':<25} {'R$/kWh':>8}")
+    print(f"{'Tarifa':<25} {'R$/kWh':>12}")
     separator()
-    print(f"{'Base (comum)':<25} {'R$ '+str(fares['base']):.2f:>8}")
-    print(f"{'Horário de pico':<25} {'R$ '+str(fares['horario_pico']):.2f:>8}")
-    print(f"{'Premium':<25} {'R$ '+str(fares['premium']):.2f:>8}")
-    print(f"{'Cortesia solar':<25} {'R$ '+str(fares['cortesia_solar']):.2f:>8}")
+    print(f"{'Base (comum)':<25} R$ {fares['base']:>6.2f}")
+    print(f"{'Horário de pico':<25} R$ {fares['horario_pico']:>6.2f}")
+    print(f"{'Premium':<25} R$ {fares['premium']:>6.2f}")
+    print(f"{'Cortesia solar':<25} R$ {fares['cortesia_solar']:>6.2f}")
     separator()
 
     if is_peak:

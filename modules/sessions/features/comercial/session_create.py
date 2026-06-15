@@ -1,9 +1,10 @@
 from datetime import datetime
-from database.database import establishment_chargers, sessions
+from database.database import establishment_chargers, sessions, establishments
 from modules.ocpp_event import register_ocpp_event
-from utils.helpers import get_user_active_session, get_user_vehicle
+from utils.helpers import get_user_active_session, get_user_vehicle, current_power_usage
 from utils.system import reset_terminal, load
 from utils.ui import footer, header, enter
+from database.settings import LIMIT_SIMULATION
 
 
 def create_session(user, vehicle, result, kwh_to_charge, charge_desc):
@@ -18,7 +19,25 @@ def create_session(user, vehicle, result, kwh_to_charge, charge_desc):
     print()
     register_ocpp_event(charger['id'], "BootNotification", "Carregador autenticado")
     register_ocpp_event(charger['id'], "StartTransaction", f"Sessão iniciada — {kwh_to_charge} kWh solicitados")
-    register_ocpp_event(charger['id'], "MeterValues",      f"Potência: {charger['potencia_maxima']} kW")
+
+    # Verifica impacto na demanda e aplica limitação DLM se necessário
+    est = next((e for e in establishments if e['id'] == charger.get('estabelecimento_id')), None)
+    est_limit = est['demanda_maxima_kw'] if est else LIMIT_SIMULATION
+
+    current_total = current_power_usage(establishment_chargers)
+    allowed_limit = min(est_limit, LIMIT_SIMULATION)
+    allowed_additional = max(0, allowed_limit - current_total)
+
+    # Decide potência alocada para a sessão (pode ser reduzida pelo DLM)
+    if allowed_additional <= 0:
+        allocated_power = 0
+    else:
+        allocated_power = min(charger['potencia_maxima'], allowed_additional)
+
+    if allocated_power < charger['potencia_maxima']:
+        register_ocpp_event(charger['id'], "MeterValues", f"Potência reduzida para {allocated_power} kW devido a DLM")
+    else:
+        register_ocpp_event(charger['id'], "MeterValues", f"Potência: {allocated_power} kW")
 
     new_session = {
         "id": max(s['id'] for s in sessions) + 1,
@@ -26,7 +45,7 @@ def create_session(user, vehicle, result, kwh_to_charge, charge_desc):
         "veiculo_id": vehicle['id'],
         "carregador_id": charger['id'],
         "tipo": session_type,
-        "potencia_kw": charger['potencia_maxima'],
+        "potencia_kw": allocated_power,
         "energia_kwh": kwh_to_charge,
         "tarifa_kwh": fare,
         "valor":  total_price,
@@ -37,7 +56,7 @@ def create_session(user, vehicle, result, kwh_to_charge, charge_desc):
 
     sessions.append(new_session)
     charger['status'] = 'em_uso'
-    charger['potencia_atual'] = charger['potencia_maxima']
+    charger['potencia_atual'] = allocated_power
     charger['total_sessoes']  += 1
 
     reset_terminal()

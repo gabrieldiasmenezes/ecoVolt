@@ -285,6 +285,25 @@ pip install -r requirements.txt
 
 ---
 
+**Demo script: `demo.py`**
+
+- **Localização:** `demo.py` (arquivo na raiz do projeto).
+- **Objetivo:** demonstrar automaticamente os principais cenários da Sprint 2 para avaliação.
+- **O que o script realiza:**
+	- Inicia 3 sessões de recarga (usuários 1000, 1001 e 1002) sem interação.
+	- Mostra logs OCPP simulados (Boot/Start/MeterValues).
+	- Executa a simulação DLM de sobrecarga e imprime a redistribuição proposta.
+	- Gera e imprime relatório do estabelecimento (energia, faturamento, CO₂ evitado).
+- **Como executar:**
+
+```bash
+python demo.py
+```
+
+- **Saída esperada:** resumo de sessões ativas, mensagens OCPP simuladas, resultado da simulação DLM e relatório final.
+
+---
+
 Se quiser, eu posso:
 - Gerar os scripts de simulação DLM para 3 veículos simultâneos.
 - Criar testes `pytest` a partir da tabela de testes acima.
