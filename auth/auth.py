@@ -1,9 +1,8 @@
 from auth.login import login
-from auth.signUp import signUp
+from auth.sign_up.sign_up import signUp
 from utils.system import load,reset_terminal
 from utils.ui import error_option, header
-from utils.validate.mutual_data import validate_option
-
+from utils.validation.common_validation import validate_int_value
 
 
 def auth():
@@ -12,7 +11,7 @@ def auth():
     while True:
         header("ÁREA DE AUTENTICAÇÃO")
 
-        option = validate_option("""
+        option = validate_int_value("""
 1 - Login
 2 - Cadastro
 0 - Encerrar Sistema

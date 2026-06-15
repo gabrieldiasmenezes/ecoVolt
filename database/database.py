@@ -1,6 +1,6 @@
-POTENCIA_ESTABELECIMENTO = 11
-POTENCIA_RESIDENCIA = 7
 
+from database.settings import ESTABLISHMENT_POWER,RESIDENTIAL_POWER
+# from settings import ESTABLISHMENT_POWER,RESIDENTIAL_POWER
 users = [
     {
         "id": 1000,
@@ -121,7 +121,7 @@ establishment_chargers = [
         "numero": 1,
         "modelo": "GoodWe GW-DC20",
         "status": "em_uso",
-        "potencia_maxima": POTENCIA_ESTABELECIMENTO,
+        "potencia_maxima": ESTABLISHMENT_POWER,
         "potencia_atual": 11,              
         "reservado_premium": False,
         "total_sessoes": 35,
@@ -133,7 +133,7 @@ establishment_chargers = [
         "numero": 2,
         "modelo": "GoodWe GW-DC20",
         "status": "em_uso",
-        "potencia_maxima": POTENCIA_ESTABELECIMENTO,
+        "potencia_maxima": ESTABLISHMENT_POWER,
         "potencia_atual": 11,             
         "reservado_premium": True,
         "total_sessoes": 42,
@@ -145,7 +145,7 @@ establishment_chargers = [
         "numero": 3,
         "modelo": "GoodWe GW-DC20",
         "status": "em_uso",
-        "potencia_maxima": POTENCIA_ESTABELECIMENTO,
+        "potencia_maxima": ESTABLISHMENT_POWER,
         "potencia_atual": 11,              
         "reservado_premium": False,
         "total_sessoes": 28,
@@ -157,7 +157,7 @@ establishment_chargers = [
         "numero": 4,
         "modelo": "GoodWe GW-DC20",
         "status": "manutencao",
-        "potencia_maxima": POTENCIA_ESTABELECIMENTO,
+        "potencia_maxima": ESTABLISHMENT_POWER,
         "potencia_atual": 0,              
         "reservado_premium": False,
         "total_sessoes": 12,
@@ -171,7 +171,7 @@ residencial_charger = [
         "usuario_id": 1002,
         "modelo": "GoodWe Home 7kW",
         "status": "livre",
-        "potencia_maxima": POTENCIA_RESIDENCIA,
+        "potencia_maxima": RESIDENTIAL_POWER,
         "potencia_atual": 0,
         "total_sessoes": 12,
         "energia_fornecida_kwh": 120.3
@@ -199,7 +199,7 @@ sessions = [
         "veiculo_id": 1,
         "carregador_id": 2,        
         "tipo": "premium",
-        "potencia_kw": POTENCIA_ESTABELECIMENTO,
+        "potencia_kw": ESTABLISHMENT_POWER,
         "energia_kwh": 10,
         "tarifa_kwh": 5.11,
         "valor": 76.65,
@@ -213,7 +213,7 @@ sessions = [
         "veiculo_id": 2,
         "carregador_id": 3,        
         "tipo": "comum",
-        "potencia_kw": POTENCIA_ESTABELECIMENTO,
+        "potencia_kw": ESTABLISHMENT_POWER,
         "energia_kwh": 10,
         "tarifa_kwh": 4.26,
         "valor": 42.60,
@@ -227,7 +227,7 @@ sessions = [
         "veiculo_id": 3,
         "carregador_id": 1,        
         "tipo": "comum",           
-        "potencia_kw": POTENCIA_ESTABELECIMENTO,
+        "potencia_kw": ESTABLISHMENT_POWER,
         "energia_kwh": 8,
         "tarifa_kwh": 4.26,        
         "valor": 34.08,           
