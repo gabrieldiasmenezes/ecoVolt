@@ -1,6 +1,5 @@
 import re
 from pydantic import BaseModel, EmailStr, ValidationError
-from database.database import users
 from utils.helpers import field_exists
 
 
