@@ -1,6 +1,5 @@
-
 from database.settings import ESTABLISHMENT_POWER,RESIDENTIAL_POWER
-# from settings import ESTABLISHMENT_POWER,RESIDENTIAL_POWER
+
 users = [
     {
         "id": 1000,

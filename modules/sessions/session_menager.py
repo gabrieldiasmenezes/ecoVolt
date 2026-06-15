@@ -1,7 +1,7 @@
-from modules.sessions.features.charge_amount import choose_charge_amount
-from modules.sessions.features.charger_select import select_charger
-from modules.sessions.features.select_confirm import confirm_and_pay
-from modules.sessions.features.session_create import create_session, end_session_flow
+from modules.sessions.features.comercial.charge_amount import choose_charge_amount
+from modules.sessions.features.comercial.charger_select import select_charger
+from modules.sessions.features.comercial.select_confirm import confirm_and_pay
+from modules.sessions.features.comercial.session_create import create_session, end_session_flow
 from modules.vehicles.vehicle_meneger import prompt_register_if_no_vehicle
 from utils.helpers import get_user_active_session, get_user_vehicle
 from utils.system import reset_terminal

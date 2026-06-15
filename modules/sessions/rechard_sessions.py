@@ -1,4 +1,3 @@
-
 from modules.sessions.features.summary import session_summary
 import modules.sessions.features.views as vi
 from utils.system import reset_terminal

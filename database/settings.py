@@ -1,9 +1,16 @@
 ESTABLISHMENT_POWER = 11
 RESIDENTIAL_POWER = 7
 LIMIT_SIMULATION = 25
+
 ROYALTY_RATE = 0.10
 CO2_FACTOR = 0.233
 KWH_PER_100KM = 15
+
+PRICE_GASOLINE_PER_LITER = 6.20   # R$ por litro simulado
+KM_PER_LITER = 12                  # consumo médio carro a gasolina
+KWH_PER_100KM = 15   
+
+DLM_CIRCUIT_BREAKER_LIMIT_KW = 5.0  # consumo médio elétrico
 
 LINE_SEPARATOR='─' * 38
 
@@ -49,3 +56,30 @@ PAYMENT_METHODS = {
     3: "Pix",
     4: "Carteira ChargeGrid"
 }
+
+
+CHARGE_MODES={
+    1: {
+        "nome": "Prioridade Solar (Eco) ☀",
+        "descricao": "Carrega apenas com excedente solar — custo zero",
+        "potencia_kw": 3.5,
+        "tarifa_override": 0.0
+    },
+    2: {
+        "nome": "FV + Bateria 🔋",
+        "descricao": "Solar + bateria da casa — evita rede elétrica",
+        "potencia_kw": 5.0,
+        "tarifa_override": 1.00
+    },
+    3: {
+        "nome": "Carga Rápida (Fast) ⚡",
+        "descricao": "Potência máxima — rede + solar + bateria",
+        "potencia_kw": 7.0,
+        "tarifa_override": None   
+    }
+}
+
+OFF_PEAK_WINDOWS = [
+    {"janela": "22h – 00h", "desconto": "30%", "hora_inicio": 22},
+    {"janela": "00h – 06h", "desconto": "35%", "hora_inicio": 0},
+]

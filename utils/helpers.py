@@ -66,6 +66,14 @@ def get_user_vehicle(user_id):
     )
     return vehicle
 
+def get_user_charger(user_id):
+    charger= find_item_by_field(
+        db.residencial_charger,
+        user_id,
+        "usuario_id"
+    )
+    return charger
+
 def get_user_active_session(user):
     for s in db.sessions:
         if s['usuario_id'] == user['id'] and s['status'] == 'ativa':
@@ -79,6 +87,8 @@ def get_user_sessions(user_id):
         'usuario_id'
     )
     return user
+
+
 # ==========================
 # SESSÕES
 # ==========================

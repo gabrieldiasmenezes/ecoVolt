@@ -1,5 +1,5 @@
 from database.settings import KWH_PER_100KM
-from utils.system import reset_terminal
+from utils.system import choose_soc_target, reset_terminal
 from utils.ui import header, error_option
 from utils.validation.common_validation import validate_int_value,validate_float_value
 
@@ -9,22 +9,8 @@ from utils.validation.common_validation import validate_int_value,validate_float
 def _charge_by_battery(vehicle):
     battery_current_pct = vehicle['nivel_bateria']
     battery_kwh = vehicle['bateria_kwh']
-    min_target = battery_current_pct + 10
+    target_pct = choose_soc_target(vehicle)
     
-    print(f"\nNível atual:  {battery_current_pct}%")
-    print(f"Mínimo permitido: {min_target}%  (mínimo 10% acima do atual)")
-    print(f"Máximo permitido: 100%\n")
-
-    while True:
-        target_pct=validate_int_value(f"Nível desejado (%) [{min_target}–100]: ")
-
-        if target_pct < min_target:
-            print(f"O nível deve ser pelo menos {min_target}% (10% acima do atual).")
-            continue
-        if target_pct > 100:
-            print("O nível não pode ultrapassar 100%.")
-            continue
-        break
 
     kwh_to_charge = round((target_pct - battery_current_pct) / 100 * battery_kwh, 2)
     autonomy_after = round(target_pct / 100 * battery_kwh / KWH_PER_100KM * 100)
