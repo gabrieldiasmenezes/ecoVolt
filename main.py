@@ -18,20 +18,39 @@ Sistema Inteligente de Recarga Elétrica
 """)
     enter()
     load("Inicializando sistema")
+"""
+MODO DE TESTE (SEM AUTENTICAÇÃO)
 
+Para facilitar a validação da aplicação, é possível executar o sistema
+sem precisar realizar login repetidamente.
+
+Para isso:
+1. Comente a linha: user = auth()
+2. Descomente o bloco abaixo que busca o usuário diretamente no banco de dados.
+
+Cada ID representa um perfil diferente para testes:
+
+1000 e 1001 -> cliente comercial  
+1002        -> cliente residencial  
+1003        -> dono de estabelecimento  
+1004        -> administrador GoodWe  
+
+⚠️ IMPORTANTE:
+Este modo deve ser usado apenas para testes e desenvolvimento.
+Em produção, a autenticação deve permanecer ativa.
+"""
 def main():
     try:
         welcome()
         while True:
-            # user = auth()
-            for u in users:
-                if u['id'] == 1004:
-                    user=u
+            user = auth()
+            # for u in users:
+            #     if u['id'] == 1004:
+            #         user=u
 
-            if not user:
-                return
-            
-            
+            # if not user:
+            #     return
+             
             type_account=user['perfil']
             match type_account:
                 case 'dono_estabelecimento':
