@@ -42,19 +42,19 @@
         <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12L6 4l4 6 2-3 2 3"/></svg>
         DLM & Energia
         </a>
-        <a href="#logs" class="nav-item">
+        <a href="#sessions" class="nav-item">
         <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><line x1="5" y1="6" x2="11" y2="6"/><line x1="5" y1="9" x2="9" y2="9"/></svg>
-        Logs OCPP
+        Sessões & Logs
         </a>
 
         <div class="nav-group-label">Uso</div>
         <a href="#howto" class="nav-item">
         <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><polyline points="8 5 8 8 10 10"/></svg>
-        Passo a Passo
+        Como Rodar
         </a>
-        <a href="#reference" class="nav-item">
+        <a href="#cadastro" class="nav-item">
         <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h8l2 2v10H3V2z"/><line x1="6" y1="7" x2="10" y2="7"/><line x1="6" y1="10" x2="10" y2="10"/></svg>
-        Referência de Arquivos
+        Tipos de Cadastro
         </a>
         <a href="#next" class="nav-item">
         <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="4 8 8 12 12 8"/><line x1="8" y1="4" x2="8" y2="12"/></svg>
@@ -79,7 +79,6 @@
         Gateway middleware em Python que transforma carregadores de veículos elétricos e medidores inteligentes em um hub de inteligência — com controle de demanda, tarifação dinâmica e telemetria em tempo real.
         </p>
 
-        <!-- Pulse bar — signature element -->
         <div class="pulse-bar" aria-hidden="true">
         <span style="animation-delay:.00s;height:18px"></span>
         <span style="animation-delay:.07s;height:28px"></span>
@@ -109,8 +108,8 @@
             <span class="stat-label">Fundamentos técnicos</span>
         </div>
         <div class="stat">
-            <span class="stat-value">3<span> personas</span></span>
-            <span class="stat-label">Perfis de usuário</span>
+            <span class="stat-value">4<span> perfis</span></span>
+            <span class="stat-label">Tipos de usuário</span>
         </div>
         <div class="stat">
             <span class="stat-value">MVC<span></span></span>
@@ -143,23 +142,28 @@
         <section class="section" id="personas">
         <div class="section-eyebrow">Quem usa</div>
         <h2>Personas do Sistema</h2>
-        <p class="section-intro">O sistema atende três perfis com níveis distintos de acesso e objetivos diferentes.</p>
+        <p class="section-intro">O sistema atende quatro perfis com níveis distintos de acesso e objetivos diferentes.</p>
 
         <div class="personas">
             <div class="persona-card">
             <div class="persona-icon" style="background:rgba(0,212,255,.1);">🏢</div>
             <h3>Administrador Master</h3>
-            <p>Perfil GoodWe com acesso total. Monitora a frota completa, visualiza toda a telemetria e gerencia royalties entre estabelecimentos.</p>
+            <p>Perfil GoodWe com acesso total. Monitora frota completa, visualiza toda a telemetria, gerencia royalties e tem acesso exclusivo ao módulo de IA.</p>
             </div>
             <div class="persona-card">
             <div class="persona-icon" style="background:rgba(255,184,0,.1);">📊</div>
-            <h3>Gestor do Estabelecimento</h3>
+            <h3>Dono do Estabelecimento</h3>
             <p>Perfil B2B. Recebe relatórios financeiros consolidados, métricas de saúde do hardware e alertas de sobrecarga em tempo real.</p>
             </div>
             <div class="persona-card">
-            <div class="persona-icon" style="background:rgba(0,230,118,.1);">⚡</div>
-            <h3>Cliente Final</h3>
-            <p>Inicia sessões de recarga via RFID, consulta o custo estimado em tempo real, acessa histórico de sessões e acompanha a economia de CO₂ gerada.</p>
+            <div class="persona-icon" style="background:rgba(0,230,118,.1);">🏙️</div>
+            <h3>Cliente Comercial</h3>
+            <p>Inicia sessões de recarga nos estabelecimentos, consulta histórico de uso e acompanha a economia de CO₂ gerada.</p>
+            </div>
+            <div class="persona-card">
+            <div class="persona-icon" style="background:rgba(167,139,250,.1);">🏠</div>
+            <h3>Cliente Residencial</h3>
+            <p>Inicia recargas, consulta custos estimados e acompanha histórico com base no seu próprio carregador instalado.</p>
             </div>
         </div>
         </section>
@@ -175,25 +179,34 @@
             <div class="pillar-num">1</div>
             <div class="pillar-label">DLM</div>
             <h3>Controle de Demanda</h3>
-            <p>Quando o consumo total se aproxima do limite contratado do prédio, o sistema reduz automaticamente a potência dos carregadores — cortando primeiro os usuários de menor prioridade para proteger a infraestrutura.</p>
+            <p>Quando o consumo total se aproxima do limite contratado, o sistema reduz automaticamente a potência dos carregadores — cortando primeiro os usuários de menor prioridade para proteger a infraestrutura.</p>
             </div>
             <div class="pillar">
             <div class="pillar-num">2</div>
             <div class="pillar-label">Interoperabilidade</div>
             <h3>Protocolos Abertos</h3>
-            <p>O gateway traduz dados dos dispositivos físicos (MODBUS / SEMS Plus) para o formato OCPP simulado, garantindo que qualquer sistema de faturamento ou gestão possa consumir os dados sem adaptações.</p>
+            <p>O gateway traduz dados dos dispositivos físicos (MODBUS / SEMS Plus) para o formato OCPP simulado, garantindo compatibilidade com qualquer sistema de faturamento ou gestão de terceiros.</p>
             </div>
             <div class="pillar">
             <div class="pillar-num">3</div>
             <div class="pillar-label">Financeiro</div>
             <h3>Tarifação Dinâmica</h3>
-            <p>O custo do kWh é calculado em tempo real considerando o horário (pico / fora de pico), o tipo de plano do usuário e a disponibilidade de energia solar no momento da sessão.</p>
+            <p>O custo do kWh varia conforme:</p>
+            <ul>
+                <li>Horário (pico / fora de pico)</li>
+                <li>Tipo de usuário (Premium, Cortesia Solar…)</li>
+                <li>Disponibilidade de energia solar no momento</li>
+            </ul>
             </div>
             <div class="pillar">
             <div class="pillar-num">4</div>
-            <div class="pillar-label">IA</div>
+            <div class="pillar-label">IA · Exclusivo Admin Master</div>
             <h3>Inteligência Aplicada</h3>
-            <p>Modelo preditivo antecipa picos de consumo nas próximas horas. O Síndico Virtual converte telemetria bruta em relatórios gerenciais em linguagem natural para gestores do estabelecimento.</p>
+            <p>Demonstra o funcionamento base do modelo preditivo planejado para o sistema real. Composto por:</p>
+            <ul>
+                <li><strong style="color:var(--text)">Modelo preditivo</strong> — antecipa picos de consumo nas próximas horas</li>
+                <li><strong style="color:var(--text)">Síndico Virtual</strong> — gera relatórios gerenciais em linguagem natural a partir da telemetria</li>
+            </ul>
             </div>
         </div>
         </section>
@@ -205,31 +218,30 @@
         <p class="section-intro">O projeto segue o padrão MVC — modelos (dados), controladores (lógica) e visões (APIs). Cada módulo é independente para permitir simulação local.</p>
 
         <div class="file-tree">
-            <div class="tree-row"><span style="color:#4A5568">📦 </span><span class="folder">ecoVolt/</span></div>
+            <div class="tree-row"><span style="color:#4A5568">📦 </span><span class="folder">projeto/</span></div>
             <div class="tree-row"><span style="color:#4A5568">├── </span><span class="special">main.py</span><span class="fdesc">→ Ponto de entrada, inicializa o gateway e os serviços</span></div>
             <div class="tree-row"><span style="color:#4A5568">├── </span><span class="special">demo.py</span><span class="fdesc">→ Demonstração automática Sprint 2 (sem interação)</span></div>
             <div class="tree-row">&nbsp;</div>
             <div class="tree-row"><span style="color:#4A5568">├── </span><span class="folder">auth/</span><span class="fdesc">→ Autenticação e cadastro de usuários</span></div>
-            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="fname">auth.py</span><span class="fdesc">→ Controle de sessão e validação de token</span></div>
-            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="fname">login.py</span><span class="fdesc">→ Autenticação por e-mail / senha</span></div>
-            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="fname">get_data_user.py</span><span class="fdesc">→ Consulta dados do usuário por ID</span></div>
+            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="fname">auth.py</span></div>
+            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="fname">login.py</span></div>
+            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="fname">get_data_user.py</span></div>
             <div class="tree-row"><span style="color:#4A5568">│   └── </span><span class="folder">sign_up/</span><span class="fdesc">→ Fluxo completo de cadastro</span></div>
-        
-            <div class="tree-row"><span style="color:#4A5568">├── </span><span class="folder">doc/</span><span class="fdesc">→ Relatório Técnico em html</span></div>
-
+            <div class="tree-row"><span style="color:#4A5568">├── </span><span class="folder">doc/</span><span class="fdesc">→ Relatório Técnico feito em formato .html</span></div>
             <div class="tree-row">&nbsp;</div>
             <div class="tree-row"><span style="color:#4A5568">├── </span><span class="folder">modules/</span><span class="fdesc">→ Núcleo de funcionalidades</span></div>
-            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="folder">vehicles/</span><span class="fdesc">→ CRUD completo de veículos</span></div>
+            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="folder">vehicles/</span><span class="fdesc">→ CRUD de veículos</span></div>
             <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="folder">sessions/</span><span class="fdesc">→ Gestão de sessões de recarga + DLM</span></div>
-            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="folder">commercial/</span><span class="fdesc">→ Tarifação e faturamento dinâmico</span></div>
-            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="folder">establishment/</span><span class="fdesc">→ Configurações do estabelecimento</span></div>
-            <div class="tree-row"><span style="color:#4A5568">│   └── </span><span class="folder">administration/</span><span class="fdesc">→ Painel administrativo GoodWe</span></div>
+            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="folder">commercial/</span><span class="fdesc">→ Gestão de clientes comerciais</span></div>
+            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="folder">establishment/</span><span class="fdesc">→ Gestão do estabelecimento</span></div>
+            <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="folder">residential/</span><span class="fdesc">→ Gestão de clientes residenciais</span></div>
+            <div class="tree-row"><span style="color:#4A5568">│   └── </span><span class="folder">administration/</span><span class="fdesc">→ Painel administrativo Master</span></div>
             <div class="tree-row">&nbsp;</div>
             <div class="tree-row"><span style="color:#4A5568">├── </span><span class="folder">database/</span></div>
             <div class="tree-row"><span style="color:#4A5568">│   ├── </span><span class="fname">database.py</span><span class="fdesc">→ Conexão com banco de dados</span></div>
             <div class="tree-row"><span style="color:#4A5568">│   └── </span><span class="fname">settings.py</span><span class="fdesc">→ Configurações de persistência</span></div>
             <div class="tree-row">&nbsp;</div>
-            <div class="tree-row"><span style="color:#4A5568">└── </span><span class="folder">utils/</span></div>
+            <div class="tree-row"><span style="color:#4A5568">└── </span><span class="folder">utils/</span><span class="fdesc">→ Funções utilitárias</span></div>
             <div class="tree-row"><span style="color:#4A5568">    └── </span><span class="folder">validation/</span><span class="fdesc">→ Regras de validação compartilhadas</span></div>
         </div>
         </section>
@@ -240,7 +252,6 @@
         <h2>Controle de Demanda (DLM) e Energia</h2>
         <p class="section-intro">O DLM é o coração do sistema. Ele decide em tempo real quanta potência cada veículo recebe, com base no consumo total do prédio e na prioridade de cada usuário.</p>
 
-        <!-- Flow -->
         <div class="flow-grid" style="margin-bottom: 28px;">
             <div class="flow-card">
             <div class="flow-icon">📡</div>
@@ -255,7 +266,7 @@
             <div class="flow-card">
             <div class="flow-icon">⚖️</div>
             <h4>Redistribuição</h4>
-            <p>Se &gt; 95% do limite, corta potência por ordem de prioridade de plano de usuário.</p>
+            <p>Se &gt; 95% do limite, corta potência por ordem de prioridade de plano do usuário.</p>
             </div>
             <div class="flow-card">
             <div class="flow-icon">💰</div>
@@ -264,10 +275,9 @@
             </div>
         </div>
 
-        <!-- DLM visual bars -->
+        <!-- Simulation bars -->
         <div class="dlm-visual" style="margin-bottom: 24px;">
             <p style="font-size:12px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Simulação — 3 Veículos Simultâneos</p>
-
             <div class="dlm-bar-wrap">
             <div class="dlm-bar-label"><span>Usuário Premium (Nissan Leaf)</span><span style="color:var(--green)">22 kW · 100%</span></div>
             <div class="dlm-bar-track"><div class="dlm-bar-fill fill-green" style="width:100%"></div></div>
@@ -281,13 +291,12 @@
             <div class="dlm-bar-track"><div class="dlm-bar-fill fill-cyan" style="width:30%"></div></div>
             </div>
             <div class="dlm-bar-wrap" style="margin-top:20px;">
-            <div class="dlm-bar-label"><span>Consumo total do prédio</span><span style="color:#FF5252">96% do limite</span></div>
+            <div class="dlm-bar-label"><span>Consumo total do prédio</span><span style="color:#FF5252">96% do limite contratado</span></div>
             <div class="dlm-bar-track" style="height:14px;"><div class="dlm-bar-fill fill-red" style="width:96%"></div></div>
             </div>
         </div>
 
-        <!-- Priority -->
-        <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:16px;color:var(--text);">Ordem de prioridade de corte</h3>
+        <h3 class="sub-h">Ordem de corte de potência</h3>
         <div class="priority-list" style="margin-bottom: 28px;">
             <div class="priority-row">
             <div class="pri-num">1</div>
@@ -306,8 +315,7 @@
             </div>
         </div>
 
-        <!-- Energy priority -->
-        <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:16px;color:var(--text);">Prioridade de fonte de energia</h3>
+        <h3 class="sub-h">Prioridade de fonte de energia</h3>
         <div class="priority-list">
             <div class="priority-row">
             <div class="pri-num">1º</div>
@@ -325,35 +333,36 @@
             <span class="pri-badge badge-gray">⚡ Rede</span>
             </div>
         </div>
-
-        <!-- Pseudo-code -->
-        <div style="margin-top: 28px;">
-            <div class="code-block">
-            <div class="code-header">
-                <div class="code-dots"><span></span><span></span><span></span></div>
-                <span class="code-lang">python · balanceador DLM</span>
-            </div>
-            <div class="code-body"><pre><span class="cm"># Entrada: sessões ativas, limite contratado, prioridades dos planos</span>
-    <span class="kw">def</span> <span class="fn">distribuir_potencia</span>(sessoes, limite_kw, prioridades):
-        demanda_total = <span class="fn">sum</span>(s.requested_kw <span class="kw">for</span> s <span class="kw">in</span> sessoes)
-
-        <span class="kw">if</span> demanda_total &lt;= limite_kw:
-            <span class="fn">alocar_potencia_normal</span>(sessoes)
-        <span class="kw">else</span>:
-            <span class="cm"># Cortar primeiro os usuários sem prioridade</span>
-            sessoes_ord = <span class="fn">ordenar_por_prioridade</span>(sessoes, prioridades)
-            <span class="fn">reduzir_para_encaixar</span>(sessoes_ord, limite_kw)
-
-        <span class="kw">return</span> sessoes  <span class="cm"># com `allocated_kw` atualizado</span></pre></div>
-            </div>
-        </div>
         </section>
 
-        <!-- LOGS -->
-        <section class="section" id="logs">
-        <div class="section-eyebrow">Auditoria</div>
-        <h2>Logs OCPP Simulado</h2>
-        <p class="section-intro">Cada evento crítico gera um registro em JSON compatível com o padrão OCPP — pronto para integrar com qualquer sistema de faturamento.</p>
+        <!-- SESSIONS & LOGS -->
+        <section class="section" id="sessions">
+        <div class="section-eyebrow">Dados & Auditoria</div>
+        <h2>Sessões de Recarga e Logs OCPP</h2>
+        <p class="section-intro">As sessões registram todo o fluxo de recarga — base para faturamento, gestão operacional e monitoramento de demanda. Os logs garantem rastreabilidade de cada evento crítico.</p>
+
+        <h3 class="sub-h">Formato de uma sessão</h3>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px;">Cada recarga gera um objeto com os campos abaixo, armazenado para faturamento e relatórios:</p>
+        <div class="code-block">
+            <div class="code-header">
+            <div class="code-dots"><span></span><span></span><span></span></div>
+            <span class="code-lang">json · sessão de recarga</span>
+            </div>
+            <div class="log-body" style="padding:18px 20px;"><pre>{
+    <span class="log-key">"id"</span>:                    <span class="log-num">1</span>,
+    <span class="log-key">"usuario_id"</span>:           <span class="log-num">1000</span>,
+    <span class="log-key">"veiculo_id"</span>:           <span class="log-num">2000</span>,
+    <span class="log-key">"carregador_id"</span>:        <span class="log-num">2</span>,
+    <span class="log-key">"energia_consumida_kwh"</span>: <span class="log-num">22.5</span>,
+    <span class="log-key">"custo_total"</span>:          <span class="log-num">11.25</span>,
+    <span class="log-key">"inicio"</span>:               <span class="log-ts">"2026-06-12T18:30:00"</span>,
+    <span class="log-key">"fim"</span>:                  <span class="log-ts">"2026-06-12T20:00:00"</span>,
+    <span class="log-key">"status"</span>:               <span class="log-str">"finalizada"</span>
+    }</pre></div>
+        </div>
+
+        <h3 class="sub-h" style="margin-top:32px;">Logs OCPP Simulado</h3>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px;">Cada evento crítico gera um registro em JSON compatível com o padrão OCPP — pronto para integrar com qualquer sistema de faturamento:</p>
 
         <div class="log-block">
             <div class="log-header">
@@ -362,22 +371,18 @@
             <span style="margin-left:auto">JSON</span>
             </div>
             <div class="log-body"><pre>{
-    <span class="log-key">"messageType"</span>: <span class="log-str">"StartTransaction"</span>,
-    <span class="log-key">"timestamp"</span>:   <span class="log-ts">"2026-06-15T12:34:56Z"</span>,
-    <span class="log-key">"connectorId"</span>: <span class="log-num">1</span>,
-    <span class="log-key">"transactionId"</span>: <span class="log-str">"tx-12345"</span>,
-    <span class="log-key">"meterValue"</span>:  <span class="log-num">12.34</span>,
-    <span class="log-key">"userId"</span>:       <span class="log-str">"u-987"</span>,
-    <span class="log-key">"notes"</span>:        <span class="log-str">"simulated"</span>
+    <span class="log-key">"id"</span>:           <span class="log-num">1</span>,
+    <span class="log-key">"carregador_id"</span>: <span class="log-num">2</span>,
+    <span class="log-key">"tipo"</span>:          <span class="log-str">"BootNotification"</span>,
+    <span class="log-key">"mensagem"</span>:      <span class="log-str">"Carregador conectado"</span>,
+    <span class="log-key">"timestamp"</span>:     <span class="log-ts">"2026-06-12 18:29"</span>
     }</pre></div>
         </div>
 
         <div style="margin-top:16px;">
             <div class="table-wrap">
             <table class="data-table">
-                <thead>
-                <tr><th>messageType</th><th>Quando é gerado</th></tr>
-                </thead>
+                <thead><tr><th>tipo</th><th>Quando é gerado</th></tr></thead>
                 <tbody>
                 <tr><td>BootNotification</td><td>Ao inicializar o gateway ou reconectar um carregador</td></tr>
                 <tr><td>StartTransaction</td><td>Quando um usuário inicia uma sessão de recarga</td></tr>
@@ -389,49 +394,57 @@
         </div>
         </section>
 
-        <!-- HOW TO -->
+        <!-- HOW TO RUN -->
         <section class="section" id="howto">
-        <div class="section-eyebrow">Guia de Uso</div>
-        <h2>Passo a Passo — Como Usar</h2>
-        <p class="section-intro">Siga esta ordem: primeiro instale, depois crie um usuário, e só então cadastre veículos e inicie sessões.</p>
+        <div class="section-eyebrow">Execução</div>
+        <h2>Como Rodar Localmente</h2>
+        <p class="section-intro">Pré-requisito: Python 3.8 ou superior instalado.</p>
 
-        <div class="alert alert-info">
-            <span class="alert-icon">ℹ️</span>
-            <span>Pré-requisito: Python 3.8 ou superior instalado.</span>
-        </div>
-
-        <div class="steps" style="margin-top: 28px;">
-
-            <!-- Step 0 -->
-            <div class="step">
-            <div class="step-left">
-                <div class="step-num">0</div>
-                <div class="step-line"></div>
+        <div class="code-block">
+            <div class="code-header">
+            <div class="code-dots"><span></span><span></span><span></span></div>
+            <span class="code-lang">bash · instalação</span>
             </div>
-            <div class="step-body">
-                <h3>Instalar e iniciar</h3>
-                <p>Clone o projeto, crie um ambiente virtual e instale as dependências.</p>
-                <div class="code-block">
-                <div class="code-header">
-                    <div class="code-dots"><span></span><span></span><span></span></div>
-                    <span class="code-lang">bash</span>
-                </div>
-                <div class="code-body"><pre><span class="cm"># Entrar na pasta do projeto</span>
+            <div class="code-body"><pre><span class="cm"># 1. Entre na pasta do projeto</span>
     <span class="hl">cd</span> caminho/para/o/projeto
 
-    <span class="cm"># Criar ambiente virtual (recomendado)</span>
+    <span class="cm"># 2. Crie um ambiente virtual (recomendado)</span>
     python -m venv .venv
     .venv\Scripts\activate      <span class="cm"># Windows</span>
     source .venv/bin/activate   <span class="cm"># Linux / Mac</span>
 
-    <span class="cm"># Instalar dependências</span>
+    <span class="cm"># 3. Instale as dependências</span>
     pip install -r requirements.txt
 
-    <span class="cm"># Iniciar o gateway</span>
+    <span class="cm"># 4. Inicie o gateway</span>
     python main.py</pre></div>
-                </div>
+        </div>
+
+        <h3 class="sub-h">Demonstração automática (Sprint 2)</h3>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px;">O <code style="font-family:var(--font-mono);color:var(--cyan);font-size:12px">demo.py</code> executa os principais cenários sem nenhuma interação manual:</p>
+
+        <div class="code-block">
+            <div class="code-header">
+            <div class="code-dots"><span></span><span></span><span></span></div>
+            <span class="code-lang">bash</span>
             </div>
-            </div>
+            <div class="code-body"><pre>python demo.py
+
+    <span class="cm"># O que acontece automaticamente:</span>
+    <span class="cm"># 1. 3 sessões simultâneas iniciadas (usuários 1000, 1001, 1002)</span>
+    <span class="cm"># 2. Logs OCPP simulados exibidos (Boot / Start / MeterValues)</span>
+    <span class="cm"># 3. Simulação DLM de sobrecarga e redistribuição de potência</span>
+    <span class="cm"># 4. Relatório final: energia consumida, faturamento, CO₂ evitado</span></pre></div>
+        </div>
+        </section>
+
+        <!-- CADASTRO -->
+        <section class="section" id="cadastro">
+        <div class="section-eyebrow">Fluxo de Uso</div>
+        <h2>Tipos de Cadastro</h2>
+        <p class="section-intro">O sistema possui três tipos de conta. O fluxo de cadastro varia conforme o perfil escolhido.</p>
+
+        <div class="steps">
 
             <!-- Step 1 -->
             <div class="step">
@@ -440,39 +453,53 @@
                 <div class="step-line"></div>
             </div>
             <div class="step-body">
-                <h3>Cadastrar um usuário</h3>
-                <p>Crie um usuário de teste. Anote o <code style="font-family:var(--font-mono);color:var(--cyan);font-size:12px">user_id</code> retornado — ele será necessário nos passos seguintes.</p>
+                <h3>Cadastro de usuário</h3>
+                <p>Dados comuns a todos os perfis. O campo <code style="font-family:var(--font-mono);color:var(--cyan);font-size:12px">account_type</code> define o fluxo que será ativado a seguir.</p>
+
+                <div class="table-wrap" style="margin-bottom:14px;">
+                <table class="data-table">
+                    <thead><tr><th>account_type</th><th>Perfil</th></tr></thead>
+                    <tbody>
+                    <tr><td>cliente_residencial</td><td>Cliente com carregador próprio em casa</td></tr>
+                    <tr><td>cliente_comercial</td><td>Cliente que recarrega em estabelecimentos</td></tr>
+                    <tr><td>dono_estabelecimento</td><td>Gestor de condomínio, empresa ou ponto de recarga</td></tr>
+                    </tbody>
+                </table>
+                </div>
+
                 <div class="code-block">
                 <div class="code-header">
                     <div class="code-dots"><span></span><span></span><span></span></div>
-                    <span class="code-lang">bash</span>
+                    <span class="code-lang">json · dados do usuário</span>
                 </div>
-                <div class="code-body"><pre>python auth/sign_up/sign_up.py \
-    --name <span class="st">"Test User"</span> \
-    --email <span class="st">"test.user@example.com"</span> \
-    --password <span class="st">"Test@1234"</span> \
-    --account-type <span class="st">"resident"</span> \
-    --rfid <span class="st">"RFID-1001"</span> \
-    --phone <span class="st">"+5511999999999"</span></pre></div>
-                </div>
-
-                <div style="margin-top:12px;">
-                <div class="table-wrap">
-                    <table class="data-table">
-                    <thead><tr><th>account_type</th><th>Perfil</th></tr></thead>
-                    <tbody>
-                        <tr><td>resident</td><td>Cliente final / morador</td></tr>
-                        <tr><td>comercial</td><td>Gestor do estabelecimento</td></tr>
-                        <tr><td>admin</td><td>Administrador da plataforma</td></tr>
-                        <tr><td>goodwe</td><td>Administrador Master GoodWe</td></tr>
-                    </tbody>
-                    </table>
-                </div>
+                <div class="log-body" style="padding:18px 20px;"><pre>{
+    <span class="log-key">"name"</span>:         <span class="log-str">"Test User"</span>,
+    <span class="log-key">"email"</span>:        <span class="log-str">"test.user@example.com"</span>,
+    <span class="log-key">"phone"</span>:        <span class="log-str">"11999999999"</span>,
+    <span class="log-key">"password"</span>:     <span class="log-str">"Test@1234"</span>,
+    <span class="log-key">"city"</span>:         <span class="log-str">"São Paulo"</span>,
+    <span class="log-key">"account_type"</span>: <span class="log-str">"cliente_residencial"</span>
+    }</pre></div>
                 </div>
 
-                <div class="alert alert-warn" style="margin-top:14px;">
-                <span class="alert-icon">⚠️</span>
-                <span>Campos opcionais: <code style="font-family:var(--font-mono);font-size:12px">phone</code> e <code style="font-family:var(--font-mono);font-size:12px">rfid</code>. Se houver erro de validação, inclua ambos.</span>
+                <div class="alert alert-info">
+                <span class="alert-icon">ℹ️</span>
+                <span>Se o tipo for <code style="font-family:var(--font-mono);font-size:12px">dono_estabelecimento</code>, o sistema solicitará os dados do estabelecimento após o cadastro do usuário.</span>
+                </div>
+
+                <div class="code-block">
+                <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span class="code-lang">json · dados do estabelecimento (dono_estabelecimento)</span>
+                </div>
+                <div class="log-body" style="padding:18px 20px;"><pre>{
+    <span class="log-key">"name"</span>:                    <span class="log-str">"Condomínio Solar"</span>,
+    <span class="log-key">"address"</span>:                 <span class="log-str">"Rua das Flores, 123"</span>,
+    <span class="log-key">"cnpj"</span>:                    <span class="log-str">"45917263000106"</span>,
+    <span class="log-key">"energia_solar"</span>:           <span class="log-str">"S"</span>,
+    <span class="log-key">"demanda_contratada_kw"</span>:   <span class="log-num">44</span>,
+    <span class="log-key">"quantidade_carregador"</span>:   <span class="log-num">4</span>
+    }</pre></div>
                 </div>
             </div>
             </div>
@@ -484,16 +511,17 @@
                 <div class="step-line"></div>
             </div>
             <div class="step-body">
-                <h3>Fazer login</h3>
-                <p>Autentique o usuário criado. O sistema retorna um token de sessão.</p>
+                <h3>Login</h3>
+                <p>Autentique-se com e-mail e senha. O sistema retorna o token de sessão para as operações seguintes.</p>
                 <div class="code-block">
                 <div class="code-header">
                     <div class="code-dots"><span></span><span></span><span></span></div>
-                    <span class="code-lang">bash</span>
+                    <span class="code-lang">json · login</span>
                 </div>
-                <div class="code-body"><pre>python auth/login.py \
-    --email <span class="st">"test.user@example.com"</span> \
-    --password <span class="st">"Test@1234"</span></pre></div>
+                <div class="log-body" style="padding:18px 20px;"><pre>{
+    <span class="log-key">"email"</span>:    <span class="log-str">"maria.oliveira@email.com"</span>,
+    <span class="log-key">"password"</span>: <span class="log-str">"123456"</span>
+    }</pre></div>
                 </div>
             </div>
             </div>
@@ -505,107 +533,21 @@
                 <div class="step-line"></div>
             </div>
             <div class="step-body">
-                <h3>Consultar dados do usuário</h3>
-                <p>Recupera nome, e-mail, tipo de conta e RFID pelo ID.</p>
+                <h3>Cadastro de veículo</h3>
+                <p>Caso não haja veículo cadastrado, o sistema solicitará o cadastro antes de iniciar a primeira recarga. O sistema exibe os modelos disponíveis — se o modelo não estiver na lista, o usuário pode cadastrá-lo manualmente:</p>
                 <div class="code-block">
                 <div class="code-header">
                     <div class="code-dots"><span></span><span></span><span></span></div>
-                    <span class="code-lang">bash</span>
+                    <span class="code-lang">json · cadastro de veículo</span>
                 </div>
-                <div class="code-body"><pre>python auth/get_data_user.py --user-id <span class="nu">user-0001</span></pre></div>
-                </div>
-            </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="step">
-            <div class="step-left">
-                <div class="step-num">4</div>
-                <div class="step-line"></div>
-            </div>
-            <div class="step-body">
-                <h3>Cadastrar um veículo</h3>
-                <p>Associe um veículo ao usuário criado no passo 1.</p>
-                <div class="code-block">
-                <div class="code-header">
-                    <div class="code-dots"><span></span><span></span><span></span></div>
-                    <span class="code-lang">bash</span>
-                </div>
-                <div class="code-body"><pre>python modules/vehicles/register_vehicle.py \
-    --user-id <span class="nu">user-0001</span> \
-    --plate <span class="st">ABC1D23</span> \
-    --model <span class="st">"Leaf 40kWh"</span> \
-    --brand <span class="st">Nissan</span> \
-    --battery_capacity_kwh <span class="nu">40</span></pre></div>
-                </div>
-            </div>
-            </div>
-
-            <!-- Step 5 -->
-            <div class="step">
-            <div class="step-left">
-                <div class="step-num">5</div>
-                <div class="step-line"></div>
-            </div>
-            <div class="step-body">
-                <h3>Atualizar dados do veículo</h3>
-                <p>Edite campos como apelido, placa ou capacidade da bateria.</p>
-                <div class="code-block">
-                <div class="code-header">
-                    <div class="code-dots"><span></span><span></span><span></span></div>
-                    <span class="code-lang">bash</span>
-                </div>
-                <div class="code-body"><pre>python modules/vehicles/update_vehicle.py \
-    --vehicle-id <span class="nu">vehicle-0001</span> \
-    --alias <span class="st">"Carro do João"</span></pre></div>
-                </div>
-            </div>
-            </div>
-
-            <!-- Step 6 -->
-            <div class="step">
-            <div class="step-left">
-                <div class="step-num">6</div>
-                <div class="step-line"></div>
-            </div>
-            <div class="step-body">
-                <h3>Listar veículos</h3>
-                <p>Consulte todos os veículos de um usuário ou busque um específico.</p>
-                <div class="code-block">
-                <div class="code-header">
-                    <div class="code-dots"><span></span><span></span><span></span></div>
-                    <span class="code-lang">bash</span>
-                </div>
-                <div class="code-body"><pre><span class="cm"># Todos os veículos do usuário</span>
-    python modules/vehicles/vehicle_meneger.py --list --user <span class="nu">user-0001</span>
-
-    <span class="cm"># Veículo específico</span>
-    python modules/vehicles/vehicle_meneger.py --vehicle-id <span class="nu">vehicle-0001</span></pre></div>
-                </div>
-            </div>
-            </div>
-
-            <!-- Step 7 -->
-            <div class="step">
-            <div class="step-left">
-                <div class="step-num">7</div>
-                <div class="step-line"></div>
-            </div>
-            <div class="step-body">
-                <h3>Rodar a demonstração completa (Sprint 2)</h3>
-                <p>Executa automaticamente 3 sessões simultâneas, a simulação DLM e o relatório final. Ideal para avaliação.</p>
-                <div class="code-block">
-                <div class="code-header">
-                    <div class="code-dots"><span></span><span></span><span></span></div>
-                    <span class="code-lang">bash</span>
-                </div>
-                <div class="code-body"><pre>python demo.py
-
-    <span class="cm"># O script exibirá automaticamente:</span>
-    <span class="cm"># → 3 sessões ativas (usuários 1000, 1001, 1002)</span>
-    <span class="cm"># → Logs OCPP simulados</span>
-    <span class="cm"># → Redistribuição DLM de sobrecarga</span>
-    <span class="cm"># → Relatório: energia, faturamento, CO₂ evitado</span></pre></div>
+                <div class="log-body" style="padding:18px 20px;"><pre>{
+    <span class="log-key">"usuario_id"</span>:  <span class="log-str">"id_do_usuario_logado"</span>,
+    <span class="log-key">"modelo"</span>:      <span class="log-str">"BYD Dolphin"</span>,
+    <span class="log-key">"fabricante"</span>:  <span class="log-str">"BYD"</span>,
+    <span class="log-key">"placa"</span>:       <span class="log-str">"HJC2D33"</span>,
+    <span class="log-key">"bateria_kwh"</span>: <span class="log-num">44</span>,
+    <span class="log-key">"nivel_bateria"</span>: <span class="log-num">40</span>
+    }</pre></div>
                 </div>
             </div>
             </div>
@@ -613,72 +555,9 @@
         </div><!-- /steps -->
         </section>
 
-        <!-- REFERENCE -->
-        <section class="section" id="reference">
-        <div class="section-eyebrow">Referência</div>
-        <h2>Arquivos Principais</h2>
-        <p class="section-intro">Mapa rápido dos arquivos mais relevantes para desenvolvimento e avaliação.</p>
-
-        <div class="table-wrap">
-            <table class="data-table">
-            <thead>
-                <tr><th>Arquivo</th><th>Responsabilidade</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>main.py</td><td>Ponto de entrada. Inicializa gateway, serviços e rotinas agendadas.</td></tr>
-                <tr><td>demo.py</td><td>Script de demonstração automática para a Sprint 2.</td></tr>
-                <tr><td>auth/auth.py</td><td>Controle de sessão de usuário e validação de token.</td></tr>
-                <tr><td>auth/login.py</td><td>Autenticação por e-mail e senha.</td></tr>
-                <tr><td>auth/sign_up/</td><td>Fluxo completo de cadastro com captura de tipo de conta.</td></tr>
-                <tr><td>modules/vehicles/register_vehicle.py</td><td>Cadastro de veículo associado a um usuário.</td></tr>
-                <tr><td>modules/vehicles/update_vehicle.py</td><td>Atualização de metadados do veículo.</td></tr>
-                <tr><td>modules/vehicles/vehicle_meneger.py</td><td>Listagem e consulta de veículos.</td></tr>
-                <tr><td>modules/sessions/</td><td>Lógica de sessões de recarga, DLM e relatórios.</td></tr>
-                <tr><td>database/database.py</td><td>Conexão e acesso ao banco de dados.</td></tr>
-                <tr><td>database/settings.py</td><td>Configurações de persistência e ambiente.</td></tr>
-                <tr><td>utils/validation/</td><td>Regras de validação usadas por auth e vehicles.</td></tr>
-            </tbody>
-            </table>
-        </div>
-        </section>
-
-        <!-- NEXT STEPS -->
-        <section class="section" id="next">
-        <div class="section-eyebrow">Sprint 2</div>
-        <h2>Próximos Passos</h2>
-        <p class="section-intro">Itens planejados para a entrega da Sprint 2.</p>
-
-        <div class="checklist">
-            <div class="check-item">
-            <div class="check-box"></div>
-            <p><strong>Simulação completa com 3+ sessões</strong> — Scripts que disparam sessões simultâneas com planos distintos (Premium, Padrão, Cortesia Solar) e imprimem a redistribuição DLM.</p>
-            </div>
-            <div class="check-item">
-            <div class="check-box"></div>
-            <p><strong>Testes automatizados (pytest)</strong> — Cobertura dos fluxos de auth e vehicles com casos de sucesso e falha.</p>
-            </div>
-            <div class="check-item">
-            <div class="check-box"></div>
-            <p><strong>Módulo de IA preditivo</strong> — Conectar <code style="font-family:var(--font-mono);font-size:12px">ai/predictor.py</code> para gerar previsão de picos de consumo nas próximas horas.</p>
-            </div>
-            <div class="check-item">
-            <div class="check-box"></div>
-            <p><strong>Documentação de contratos</strong> — Criar <code style="font-family:var(--font-mono);font-size:12px">docs/messages.md</code> com todos os schemas JSON/OCPP-sim utilizados pelo gateway.</p>
-            </div>
-        </div>
-
-        <div class="alert alert-info" style="margin-top: 28px;">
-            <span class="alert-icon">💡</span>
-            <div>
-            <strong>Dica para avaliação:</strong> use sempre <code style="font-family:var(--font-mono);font-size:12px">user-0001</code>, <code style="font-family:var(--font-mono);font-size:12px">vehicle-0001</code> e <code style="font-family:var(--font-mono);font-size:12px">RFID-1001</code> como identificadores padrão nos testes para manter consistência entre os scripts.
-            </div>
-        </div>
-        </section>
-
     </div><!-- /content -->
     </main>
     <script src="script.js"></script>
-
 
     </body>
 </html>

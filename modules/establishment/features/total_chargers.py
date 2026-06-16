@@ -24,7 +24,7 @@ def get_total_chargers():
     print(f"Carregadores máximos suportados: {max_chargers}")
 
     while True:
-        contractors= verify_integer("Informe a demanda contratada (kW): ")
+        contractors= verify_integer("Informe a quantidade de carregadores que serão instalados (kW): ")
 
         if contractors > max_chargers:
             print(

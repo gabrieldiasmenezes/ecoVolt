@@ -110,7 +110,7 @@ def get_establishment_data(user):
         "id_dono":user['id'],
         "nome": company,
         "endereco": address,
-        "empresa_responsavel": user['name'],
+        "empresa_responsavel": user['nome'],
         "demanda_maxima_kw": demanda,
         "potencia_em_uso_kw": 0,
         "energia_total_distribuida_kwh": 0,

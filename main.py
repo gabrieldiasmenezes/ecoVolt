@@ -35,7 +35,7 @@ Cada ID representa um perfil diferente para testes:
 1003        -> dono de estabelecimento  
 1004        -> administrador GoodWe  
 
-⚠️ IMPORTANTE:
+  IMPORTANTE:
 Este modo deve ser usado apenas para testes e desenvolvimento.
 Em produção, a autenticação deve permanecer ativa.
 """
@@ -43,13 +43,13 @@ def main():
     try:
         welcome()
         while True:
-            user = auth()
-            # for u in users:
-            #     if u['id'] == 1004:
-            #         user=u
+            # user = auth()
+            for u in users:
+                if u['id'] == 1001:
+                    user=u
 
-            # if not user:
-            #     return
+            if not user:
+                return
              
             type_account=user['perfil']
             match type_account:

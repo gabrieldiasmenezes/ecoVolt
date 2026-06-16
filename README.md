@@ -32,7 +32,9 @@ Em termos simples: é um **middleware em Python** que fica entre os dispositivos
 |---|---|
 | **Administrador Master (GoodWe)** | Monitorar frota completa, acessar toda a telemetria, gerir royalties |
 | **Gestor do Estabelecimento (B2B)** | Ver relatórios financeiros, métricas do hardware, receber alertas |
-| **Cliente Final** | Iniciar recargas, consultar custos, ver histórico e economia de CO₂ |
+| **Cliente Comercial** | Iniciar recargas, ver histórico e economia de CO₂ |
+| **Cliente Residencial** | Iniciar recargas, consultar custos, ver histórico e economia de CO₂ baseado em seu próprio carregador |
+
 
 ---
 
@@ -51,6 +53,8 @@ O custo do kWh varia conforme:
 - Disponibilidade de energia solar
 
 ### 4. IA Aplicada
+Exclusivo para o Administrador Master,o módulo de IA deste sistema tem o objetivo de mostrar o funcionamento base do modelo preditivo que queremos implementar no sistema real da solução, com o objetivo de antecipar picos de consumo e gerar relatórios gerenciais em linguagem natural a partir da telemetria coletada.Ele é composto por:
+
 - **Modelo preditivo**: antecipa picos de consumo nas próximas horas
 - **Síndico Virtual**: gera relatórios gerenciais em linguagem natural a partir da telemetria
 
@@ -68,6 +72,7 @@ O custo do kWh varia conforme:
 │   ├── login.py
 │   ├── get_data_user.py
 │   └── sign_up/               # Fluxo completo de cadastro
+├── doc/                      # Relatório Técnico feito em formato .html
 │
 ├── modules/                   # Núcleo de funcionalidades
 │   ├── vehicles/              # CRUD de veículos
@@ -129,117 +134,63 @@ python demo.py
 
 ---
 
-## Guia de uso — passo a passo
+## Tipo de cadastro 
 
-> Siga esta ordem: primeiro crie um usuário, depois cadastre um veículo.
-
-### Passo 1 — Cadastrar um usuário
-
-```bash
-python auth/sign_up/sign_up.py \
-  --name "Test User" \
-  --email "test.user@example.com" \
-  --password "Test@1234" \
-  --account-type "cliente_residencial" \
-  --rfid "RFID-1001" \
-  --phone "11999999999"
-```
+###  1 — Cadastrar um usuário
 
 **Tipos de conta disponíveis:** `cliente_residencial` | `cliente_comercial` | `dono_estabelecimento` | 
 
-Exemplo de entrada (formato JSON):
+Exemplo de entrada informações do usuário:
 ```json
 {
   "name": "Test User",
   "email": "test.user@example.com",
+  "phone": "11999999999",
   "password": "Test@1234",
+  "city": "São Paulo",
   "account_type": "cliente_residencial",
-  "rfid": "RFID-1001",
-  "phone": "11999999999"
 }
 ```
 
-> ⚠️ Anote o `user_id` retornado — você vai precisar dele nos próximos passos.
 
----
-
-### Passo 2 — Fazer login
-
-```bash
-python auth/login.py \
-  --email "test.user@example.com" \
-  --password "Test@1234"
-```
-
-**Retorno esperado:** token de sessão (JWT) ou objeto com dados do usuário autenticado.
-
----
-
-### Passo 3 — Consultar dados do usuário
-
-```bash
-python auth/get_data_user.py --user-id user-0001
-```
-
-**Retorno esperado:** JSON com `name`, `email`, `account_type`, `rfid`.
-
----
-
-### Passo 4 — Cadastrar um veículo
-
-```bash
-python modules/vehicles/register_vehicle.py \
-  --user-id user-0001 \
-  --plate ABC1D23 \
-  --model "Leaf 40kWh" \
-  --brand Nissan \
-  --battery_capacity_kwh 40
-```
-
-Exemplo de entrada (formato JSON):
+Caso escolha `dono_estabelecimento` o sistema pedirá dados do estabelecimento que serão instalados os carregadores:
 ```json
 {
-  "user_id": "user-0001",
-  "plate": "ABC1D23",
-  "model": "Leaf 40kWh",
-  "brand": "Nissan",
-  "battery_capacity_kwh": 40
+  "name": "Condomínio Solar",
+  "address": "Rua das Flores, 123",
+  "cnpj": "45917263000106",
+  "energia_solar": "S",
+  "demanda_contratada_kw": 44,
+  "quantidade_carregador":4
+}
+```
+---
+
+### 2 — Fazer login
+
+```json
+{
+  "email": "maria.oliveira@email.com",
+  "password": "123456",
 }
 ```
 
 ---
 
-### Passo 5 — Atualizar dados do veículo
+### 3 — Cadastro de veículo
 
-```bash
-python modules/vehicles/update_vehicle.py \
-  --vehicle-id vehicle-0001 \
-  --alias "Carro do João"
+Caso nao tenha veículo cadastrado o sistema solicitará o cadastro do veículo para iniciar a recarga:
+O sistema te mostraá os modelos disponíveis para cadastro, caso o modelo do veículo não esteja na lista, o usuário pode cadastrar um novo modelo com as seguintes informações:
+```json
+  {
+      "usuario_id": "id_do_usuario_logado",
+      "modelo": "BYD Dolphin",
+      "fabricante": "BYD",
+      "placa": "HJC2D33",
+      "bateria_kwh": 44,
+      "nivel_bateria": 40
+  }
 ```
-
-**Campos que podem ser atualizados:** `alias`, `plate`, `model`, `battery_capacity_kwh`
-
----
-
-### Passo 6 — Listar / consultar veículos
-
-```bash
-# Listar todos os veículos de um usuário
-python modules/vehicles/vehicle_meneger.py --list --user user-0001
-
-# Consultar um veículo específico
-python modules/vehicles/vehicle_meneger.py --vehicle-id vehicle-0001
-```
-
----
-
-### Passo 7 — Simular múltiplas sessões (DLM)
-
-```bash
-python modules/sessions/session_menager.py --simulate-multiple
-```
-
-Simula 3 veículos carregando ao mesmo tempo e demonstra o balanceamento automático de potência.
 
 ---
 
@@ -267,36 +218,39 @@ Ao alocar potência para uma sessão, o sistema sempre prefere:
 
 ---
 
-## Formato dos logs (OCPP simulado)
 
-Cada evento crítico gera um log em JSON para auditoria e faturamento:
+## Formato das sessões de recarga
+Cada sessão de recarga é representada por um objeto JSON com os seguintes campos:
 
 ```json
-{
-  "messageType": "StartTransaction",
-  "timestamp": "2026-06-15T12:34:56Z",
-  "connectorId": 1,
-  "transactionId": "tx-12345",
-  "meterValue": 12.34,
-  "userId": "u-987",
-  "notes": "simulated"
-}
+  {
+        "id": 1,
+        "usuario_id": 1000,
+        "veiculo_id": 2000,
+        "carregador_id": 2,
+        "energia_consumida_kwh": 22.5,
+        "custo_total": 11.25,
+        "inicio": "2026-06-12T18:30:00",
+        "fim": "2026-06-12T20:00:00",
+        "status": "finalizada"
+  },
 ```
 
-**Tipos de mensagem:** `MeterValues` | `StartTransaction` | `StopTransaction` | `BootNotification`
+As sessões são responsáveis por armazenar e registrar todas as recargas realizadas nos estabelecimentos, permitindo uma gestão mais eficiente de todo o fluxo do sistema. Elas contribuem diretamente para o controle do atendimento aos clientes, a administração dos estabelecimentos — tanto no aspecto operacional quanto financeiro — e também servem como base essencial para o monitoramento de demanda e o correto faturamento das operações.
 
----
 
-## Dicas para avaliação
+## Formato dos logs (OCPP simulado)
 
-- Use sempre `user-0001` e `vehicle-0001` como IDs nos testes para manter consistência
-- Use `RFID-1001` como RFID de exemplo
-- Crie o usuário **antes** de cadastrar veículos — o `user_id` é obrigatório no cadastro de veículos
-- Campos opcionais (`phone`, `rfid`, `vin`) podem ser omitidos; se ocorrer erro de validação, inclua-os
-- Se os scripts não aceitarem argumentos CLI, use a chamada direta:
+Cada evento crítico gera um log em JSON para auditoria e faturamento como:
 
-```bash
-python -c "from auth.sign_up import sign_up; sign_up({'name':'Test User','email':'test.user@example.com','password':'Test@1234','account_type':'resident'})"
+```json
+  {
+        "id": 1,
+        "carregador_id": 2,
+        "tipo": "BootNotification",
+        "mensagem": "Carregador conectado",
+        "timestamp": "2026-06-12 18:29"
+  },
 ```
 
 ---

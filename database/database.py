@@ -76,15 +76,15 @@ vehicles = [
         "bateria_kwh": 44,
         "nivel_bateria": 35
     },
-    {
-        "id": 2,
-        "usuario_id": 1001,
-        "modelo": "Volvo EX30",
-        "fabricante": "Volvo",
-        "placa": "XYZ4E56",
-        "bateria_kwh": 51,
-        "nivel_bateria": 62
-    },
+    # {
+    #     "id": 2,
+    #     "usuario_id": 1001,
+    #     "modelo": "Volvo EX30",
+    #     "fabricante": "Volvo",
+    #     "placa": "XYZ4E56",
+    #     "bateria_kwh": 51,
+    #     "nivel_bateria": 62
+    # },
     {
         "id": 3,
         "usuario_id": 1002,
